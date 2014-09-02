@@ -1,0 +1,23 @@
+{% extends "orders/base/orders.djhtml" %}
+
+{% block title %}my orders{% endblock %}
+
+{% block post_title %}my orders{% endblock %}
+
+{% block post_meta %}monitor, add or confirm your orders here{% endblock %}
+
+{% block post_controls %}
+	<a href="{% url add_order %}"><big>+</big> add a new order</a>
+{% endblock %}
+
+{% block post_entry %}
+	{% if not orders.object_list %}
+		<p>
+			you have no orders yet, to add one just click <a href="{% url add_order %}">here</a>
+		</p>
+	{% else %}
+		{% include "orders/snippets/orders_table.djhtml" %}
+	{% endif %}
+{% endblock %}
+
+

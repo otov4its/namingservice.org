@@ -1,0 +1,7 @@
+<form class="action success" action="{% url pay_order %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="close_x"><a href=".">x</a></div>
+	<h2>do you want to pay for the following order {{ order.get_currency_display }}{{ order.cost|floatformat:2 }}?</h2>
+	<p>if all is correct <input type="submit" value="pay" /> or <a href=".">cancel</a></p>
+</form>

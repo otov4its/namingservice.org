@@ -1,0 +1,16 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block title %}my {{ block.super }}{% endblock %}
+
+{% block post_title %}my {{ block.super }}{% endblock %}
+
+{% block post_meta %}date: {{ order.crdate }}, author: me<br/>suggestion author: {{ suggestions.user }}{% endblock %}
+
+
+{% block order_desc %}
+	{{block.super}}
+
+	<h2>win suggestion <b>{{ suggestions.desc }}</b></h2>
+{% endblock %}
+
+{% block table_suggestions %}{% endblock %}

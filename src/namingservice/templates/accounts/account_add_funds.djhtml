@@ -1,0 +1,54 @@
+{% extends "accounts/base/base.djhtml" %}
+
+{% block post_controls %}<a href="{% url my_account %}">account history</a> | add funds | <a href="{% url withdraw %}">withdraw</a>{% endblock %}
+
+{% block post_entry %}
+	<script>
+		function putCost() {
+			var cost = document.getElementById('cost').value;
+			var plimusHref = "https://www.plimus.com/jsp/buynow.jsp?contractId=3020452&custom1={{ user.username }}";
+			var newHref = plimusHref;
+			if ( !isNaN( cost ) ) {
+				newHref = plimusHref + "&overridePrice=" + cost;	
+			}
+			else {
+				newHref = plimusHref; 	
+			}
+			document.getElementById('plimusHref').href = newHref; 
+		}
+		
+		function showMMMInfo() {
+			var costMMM = document.getElementById('costMMM').value;
+			var mailTo = "mailto:account@namingservice.org?subject=Add%20MMM$&body=Nickname:%20{{ user.username }}%0d%0aMMM$ amount:%20";
+			var newMailTo = mailTo;
+			if ( !isNaN( costMMM ) ) {
+				newMailTo = mailTo + costMMM;	
+			}
+			else {
+				newMailTo = mailTo + "10.00"; 	
+			}
+			document.getElementById('mailTo').href = newMailTo;
+		}
+	</script>
+	<p></p>
+	<h2 align="center">
+		$ <input id="cost" type="text" size="7" maxlength="7" value="50.00"></input> <a id="plimusHref" href="https://www.plimus.com/jsp/buynow.jsp?contractId=3020452&custom1={{ user.username }}" onclick="putCost()"> add funds</a>
+	</h2>
+	<p></p>
+	<a href="https://www.plimus.com/ecommerce/buyers" target="_blank" title="Trusted and Secure Online Payment Processing via PLIMUS"><img src="https://www.plimus.com/images/icons_wizard/icons/cards/cards_type2_3-3.gif" border="0"></a>
+	<p></p>
+	<h2 align="center">
+		MMM$ <input id="costMMM" type="text" size="7" maxlength="7" value="50.00"></input> <a id="mailTo" href="mailto:account@namingservice.org?subject=Add%20MMM$&body=Nickname:%20{{ user.username }}%0d%0aMMM$ amount:%20" onclick="showMMMInfo()"> add funds</a>
+	</h2>
+	<p>
+		<table>
+			<tr>
+				<td><a href="http://i-mmm.com/en" target="_blank" title="The Social Financial Network"><img src="{{ MEDIA_URL }}MMM-logo1-s.jpg" border="0"></a></td>
+				<td valign="top">To add MMM$ funds send email to account@namingservice.org with MMM$ amount and your nickname. Then transfer your MMM$ via <a href="http://i-mmm.com/en" target="_blank" title="The Social Financial Network">MMM-2011 - The Social Financial Network</a> to we_can@sibmail.com. After that your MMM$ will fund within 24 hours.</td>
+			</tr>
+		</table>
+	</p>	
+{% endblock %}
+
+
+

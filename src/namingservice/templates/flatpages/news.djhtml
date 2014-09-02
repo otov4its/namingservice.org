@@ -1,0 +1,9 @@
+{% extends "base_2col.djhtml" %}
+
+{% block title %}
+	{{ flatpage.title }}
+{% endblock %}
+
+{% block page_content %}
+	{{ flatpage.content }}								
+{% endblock %}

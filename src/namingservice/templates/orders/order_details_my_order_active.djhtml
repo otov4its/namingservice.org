@@ -1,0 +1,49 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block title %}my {{ block.super }}{% endblock %}
+
+{% block action_form %}
+	{% if form %}
+		{% if request.GET.action == 'win' %}
+		    {% include "orders/snippets/win_suggestion_form.djhtml" %}
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block post_title %}my {{ block.super }}{% endblock %}
+
+{% block post_meta %}date: {{ order.crdate }}, author: me{% endblock %}
+
+{% block suggestion_status %}
+	{% with suggestion.get_status_display as s %}
+	    {% if s == 'seen' or s == 'new'%}
+	        <a id='like' title="click if you like this order" href="javascript: document.vote_like_{{ suggestion.id }}.submit()">like</a>|<a id='dislike' title="click if you dislike this order" href="javascript: document.vote_dislike_{{ suggestion.id }}.submit()">dislike</a>|<a title="click if you want to complete this order" id='win' href="?action=win&suggestion_id={{ suggestion.id }}">win</a>
+	    {% else %}
+			{% if s == 'like' %} <span id="{{ s }}"><b>{{ s|upper }}</b></span><br/><a title="click if you change your mind" id='dislike' href="javascript: document.vote_dislike_{{ suggestion.id }}.submit()">dislike</a>|<a title="click if you want to complete this order" id='win' href="?action=win&suggestion_id={{ suggestion.id }}">win</a>{% endif %}
+			{% if s == 'dislike' %} <span id="{{ s }}"><b>{{ s|upper }}</b></span><br/><a title="click if you change your mind" id='like' href="javascript: document.vote_like_{{ suggestion.id }}.submit()">like</a>|<a title="click if you want to complete this order" id='win' href="?action=win&suggestion_id={{ suggestion.id }}">win</a>{% endif %}
+		{% endif %}
+	{% endwith %}	
+{% endblock %}
+
+{% block suggestion_polls %}
+	<form name="vote_like_{{ suggestion.id }}" method="post" action="{% url vote_suggestion %}" style="display:none">
+		{% csrf_token %}
+		<input name="suggestion_id" type="hidden" value="{{ suggestion.id }}"/>
+		<input name="suggestion_vote" type="hidden" value="l"/>
+	</form>
+	<form name="vote_dislike_{{ suggestion.id }}" method="post" action="{% url vote_suggestion %}" style="display:none">
+		{% csrf_token %}
+		<input name="suggestion_id" type="hidden" value="{{ suggestion.id }}"/>
+		<input name="suggestion_vote" type="hidden" value="d"/>
+	</form>
+{% endblock %}
+
+{% block table_suggestions_foot %}
+	{% if suggestions.object_list %}
+		{{block.super}}
+	{% else %}
+		<tr>
+			<td colspan="2">you have no any suggestion yet, soon your'll start receiving it</td>
+		</tr>
+	{% endif %}
+{% endblock %}

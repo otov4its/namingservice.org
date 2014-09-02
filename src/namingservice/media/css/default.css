@@ -1,0 +1,561 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(images/img01.gif) repeat-x;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+form table {
+	width: auto;
+	margin: auto;
+	padding: 20px;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+input, textarea {
+	font: 1.2em "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #333333;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-weight: normal;
+	color: #333333;
+}
+
+h1 {
+	letter-spacing: -1px;
+	font-size: 2.6em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+p, ul, ol {
+	margin-bottom: 1.6em;
+	line-height: 180%;
+}
+
+blockquote {
+	font-style: italic;
+}
+
+ul {
+}
+
+ol {
+}
+
+a {
+	border-bottom: 1px dotted #EFEFEF;
+	text-decoration: none;
+	color: #356AA0;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #CC0000;
+}
+
+small {
+}
+
+hr {
+	display: none;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 0 15px 0 0;
+}
+
+img.right {
+	float: left;
+	margin: 0 0 0 15px;
+}
+
+.debug, .seen {
+	background-color: white;
+}
+
+.info, .new {
+	background-color: #FFFFE0;
+}
+
+.success, .like {
+	background-color: #E5FFE5;
+}
+
+.warning, .dislike {
+	background-color: #FFE0E0;
+}
+
+.error, .delete {
+	background-color: #FF7676;
+}
+
+div.close_x{
+	float: right;
+	font-size: 1em;
+}
+
+div.close_x a {
+	border: none;
+}
+
+div.pagination {
+	text-align: center;
+	margin-top: 5px;
+}
+
+/* Header */
+
+#header {
+	width: 980px;
+	height: 231px;
+	margin: 0 auto;
+}
+
+#social{
+	float: right;
+}
+
+#header div#logo h1 {
+	float: left;
+	margin-top: 20px;
+	padding: 100px 190px 0 0;
+	background: url(images/img02.jpg) no-repeat right top;
+	text-transform: lowercase;
+	letter-spacing: -3px;
+	font-size: 4.4em;
+}
+
+#header div#logo h1 span {
+	color: #CC0000;
+}
+
+#header div#logo h2 {
+	float: left;
+	margin: 0 0 0 -190px;
+	padding: 160px 0 0 0;
+	text-transform: lowercase;
+	font-size: 1em;
+	font-weight: bold;
+	color: #333333;
+}
+
+#header div#logo h2 a {
+	color: #333333;
+}
+
+#header div#menu {
+	padding: 80px 0 0 0;
+}
+
+#header div#info {
+	float: right;
+	padding: 60px 0 0 0;
+}
+
+/* Search */
+
+#search {
+	float: right;
+	width: 300px;
+	padding: 150px 0 0 0;
+}
+
+#search legend {
+	display: none;
+}
+
+#searchfield {
+	width: 200px;
+}
+
+#searchsubmit {
+	width: 80px;
+}
+
+/* Page */
+
+#page {
+	width: 980px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+/* Messages */
+
+div.message {
+	text-align: center;
+	border: solid #EFEFEF 1px;
+	padding: 0 1em 0 1em;
+	margin-bottom: 1em;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	-khtml-border-radius:15px;
+}
+
+div.message p {
+	margin-bottom: 0.5em;
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 650px;
+}
+
+.post {
+	padding: 12px 50px;
+	background: url(images/img04.jpg) no-repeat;
+}
+
+.post .title {
+	letter-spacing: -1px;
+	font-size: 2.4em;
+}
+
+.post .meta {
+	margin: 0;
+	line-height: normal;
+	color: #666666;
+}
+
+.post .controls {
+	margin: 0;
+}
+
+.post .controls a{
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+.post .line {
+	border-bottom: 1px solid #EFEFEF;
+	line-height: normal;
+	color: #666666;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 300px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin-bottom: 20px;
+	padding: 20px 40px;
+	background: url(images/img03.jpg) no-repeat;
+}
+
+#sidebar li ul {
+	line-height: 2em;
+}
+
+#sidebar li li {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+#sidebar h2 {
+	margin-bottom: 10px;
+	text-transform: lowercase;
+	letter-spacing: -1px;
+	color: #CC0000;
+}
+
+#sidebar a {
+	border: none;
+}
+
+/* Footer */
+
+#footer {
+	clear: both;
+	padding: 30px 0;
+	border-top: 10px solid #DDDDDD;
+	background: #EFEFEF;
+}
+
+#footer p {
+	margin: 0;
+	padding: 10px 0 0 0;
+	text-align: center;
+	line-height: normal;
+}
+
+/* History table */
+
+table.history {
+	border-collapse: collapse;
+	width: 100%
+}
+
+table.history caption {
+	font-size: 1.8em;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+table.history td, table.history th {
+	padding: 5px;
+	line-height: 1.8em;
+	font-size: 0.8em;
+	vertical-align: top;
+	width: 20%;
+}
+
+table.history tr.odd th, table.history tr.odd td {
+	background: #efefef;
+}
+
+/* Orders table */
+
+table.orders {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.orders tbody a {
+	color: black;
+	border: none;
+}
+
+table.orders tbody a:hover {
+	color: #CC0000;
+}
+
+table.orders td, table.orders th {
+	padding: 5px;
+	vertical-align: middle;
+}
+
+table.orders tr {
+	border-right: solid white 2px;
+}
+
+table.orders tr.odd {
+	background: #efefef;
+}
+
+table.orders tbody tr:hover {
+	border-right: solid black 2px;
+}
+
+table.orders tbody td span#c {
+	color: green;
+}
+
+table.orders tbody td a#n {
+	color: red;
+	text-decoration: underline;
+}
+
+table.orders tbody td a#n:hover {
+	color: black;
+}
+
+/* Suggestions table */
+
+table.suggestions {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.suggestions caption {
+	font-size: 1.8em;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+table.suggestions tbody a {
+	color: black;
+	border: none;
+}
+
+table.suggestions tbody a:hover {
+	color: #CC0000;
+}
+
+table.suggestions td, table.suggestions th {
+	padding: 5px;
+	vertical-align: middle;
+}
+
+table.suggestions tr {
+	border-right: solid white 2px;
+}
+
+table.suggestions tr.odd {
+	background: #efefef;
+}
+
+table.suggestions tbody tr:hover {
+	border-right: solid black 2px;
+}
+
+table.suggestions tbody td span#c {
+	color: green;
+}
+
+table.suggestions tbody td a#n {
+	color: red;
+	text-decoration: underline;
+}
+
+table.suggestions tbody td a#n:hover {
+	color: black;
+}
+
+/* Order status */
+
+span#c {
+	color: green;
+}
+
+a#n {
+	color: red;
+	text-decoration: underline;
+}
+
+a#n:hover {
+	color: black;
+}
+
+/* Suggestion status */
+a#like {
+	color: green;
+	text-decoration: underline;	
+}
+
+span#like, span#o {
+	color: green;
+}
+
+a#dislike {
+	color: red;
+	text-decoration: underline;		
+}
+
+span#dislike, span#e {
+	color: red;	
+}
+
+a#win {
+	color: #356AA0;
+	text-decoration: underline;
+}
+
+h1#win {
+	color: green;
+}
+
+/* Forms fields */
+div.fieldWrapper {
+	text-align: left;	
+}
+
+div.fieldWrapper label{
+	font-size: 1.8em;	
+}
+
+div.fieldWrapper textarea, div.fieldWrapper input{
+	width: 100%;	
+}
+
+span.errorlist {
+	border-left: solid red 2px;
+	padding-left: 5px;
+}
+
+p.help_text {
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	line-height: normal;
+	color: #666666;
+}
+
+/* Action form */
+form.action {
+	border: solid #EFEFEF 1px;
+	padding: 0 1em 0 1em;
+	margin-bottom: 1em;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	-khtml-border-radius:15px;
+}
+
+form.action p, form.action h2{
+	margin: 0.5em;
+}
+
+/* Login form */
+div.login {
+	text-align: center;
+}
+
+div.login div.fieldWrapper {
+	text-align: left;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+div.login div.fieldWrapper label{
+	font-size: 1.2em;
+}
+
+div.login div.fieldWrapper span.errorlist {
+	border-left: solid red 2px;
+	padding-left: 5px;
+}
+
+/* Payments */
+div.payments {
+	text-align: center;
+	margin-bottom: 40px;
+}

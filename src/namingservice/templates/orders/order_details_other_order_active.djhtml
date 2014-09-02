@@ -1,0 +1,40 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block action_form %}
+	{% with form_del as form %}
+	    {% if form %}
+			{% if request.GET.action == 'delete' %}
+			    {% include "orders/snippets/delete_suggestion_form.djhtml" %}
+			{% endif %}
+		{% endif %}
+	{% endwith %}
+{% endblock %}
+
+{% block table_suggestions_caption %}my {{block.super}}{% endblock %}
+
+{% block table_suggestions_head %}
+	<tr>
+		<td colspan="2">
+			{% include "orders/snippets/add_suggestion_form.djhtml" %}
+		</td>
+	</tr>	
+{% endblock %}
+
+{% block suggestion_status %}
+	{% with suggestion.get_status_display as status %}		
+	    <span title="{% if status == 'new' %}your suggestion has not seen yet{% endif %}{% if status == 'seen' %}your suggestion has been seen{% endif %}{% if status == 'like' %}it likes, work in the same direction{% endif %}{% if status == 'dislike' %}it dislikes, might be worth it to change the course of thought{% endif %}{% if status == 'win' %}Yap!{% endif %}" id="{{ status }}">{{ status }}</span><br />
+		{% if status == 'new' %}
+		    <a title="you can remove the suggestion until it looked" id='dislike' href="?action=delete&suggestion_id={{ suggestion.id }}">delete</a>
+		{% endif %}
+	{% endwith %}
+{% endblock %}
+
+{% block table_suggestions_foot %}
+	{% if suggestions.object_list %}
+		{{block.super}}
+	{% else %}
+		<tr>
+			<td colspan="2">carefully read the order above, turn on imagination and start adding your suggestions</td>
+		</tr>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+<form class="action success" action="{% url win_suggestion %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="close_x"><a href=".">x</a></div>
+	<h2>
+		so, it seems that you would like to complete this order<br/>
+		you have chosen<br/>
+		<b>{{ win_suggestion.desc }}</b>
+	</h2>
+	<p>if all is correct <input type="submit" value="complete" /> or <a href=".">i think more</a></p>
+</form>

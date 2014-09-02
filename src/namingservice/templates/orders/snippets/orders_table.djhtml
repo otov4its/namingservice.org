@@ -1,0 +1,41 @@
+<table class='orders' summary='my orders'>
+	<thead>
+	</thead>	
+    {% if orders.object_list %}
+		<tbody>
+			{% for order in orders.object_list %}
+				<tr class='{% cycle '' 'odd' %}'>
+					<td width="80%">
+						<a href="{{ order.get_absolute_url }}">{{ order.desc|linebreaksbr|truncatewords:20 }}</a><br/>
+						<small>date: {{ order.crdate }}, author: {% if order.user_id == user.id %}me{% else %}{{ order.user.username }}{% endif %}</small>
+					</td>
+					<td width="20%" align="right" valign="center">
+						<big>{{ order.get_currency_display }}{{ order.cost|floatformat:2 }}</big><br/>
+						{% if order.status == 'n' %}
+							<a id="{{ order.status }}" href="{{ order.get_absolute_url }}?action=pay">{{ order.get_status_display }}</a>
+						{% else %}
+							<span id="{{ order.status }}">{{ order.get_status_display }}</span>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	{% else %}
+		<tfoot>
+		    <tr>
+				<td colspan="4">you have no any order yet, just click <a href="{% url add_order %}"><big>+</big> add a new order</a> to create one</td>
+			</tr>
+		</tfoot>
+	{% endif %}	
+</table>
+
+<!-- start pagination -->
+{% with orders as objects %}
+    {% include "orders/snippets/pagination.djhtml" %}
+{% endwith %}
+<!-- end pagination -->
+
+
+
+
+

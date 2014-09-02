@@ -1,0 +1,101 @@
+{% extends "orders/base/base.djhtml" %}
+
+{% block title %}order details "{{ order.desc|truncatewords:5 }}", reward {{ order.get_currency_display }}{{ order.cost|floatformat:2 }}{% endblock %}
+
+{% block post_social %}
+	{% if order.status != 'n' %}
+		<div id="social">
+			<iframe src="http://www.facebook.com/plugins/like.php?href={{ request.build_absolute_uri }}&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+			<br/><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block post_title %}order details{% endblock %}
+
+{% block post_meta %}date: {{ order.crdate }}, author: {{ order.user }}{% endblock %}
+
+{% block post_entry %}
+	{% block order_desc %}
+	    <h2>description</h2>
+		{{ order.desc|linebreaks }}
+		
+		{% if order.keywords %}
+		    <h2>keywords</h2>
+			<p>{{ order.keywords }}</p>
+		{% endif %}
+		
+		{% if order.restrictions %}
+			<h2>restrictions</h2>
+			{{ order.restrictions|linebreaks }}
+		{% endif %}
+		
+		{% if order.note %}
+			<h2>note</h2>
+			<p>{{ order.note }}</p>
+		{% endif %}
+		
+		<h2>cost <b>{{ order.get_currency_display }}{{ order.cost|floatformat:2 }}</b></h2>
+		<p></p>
+		
+		<h2>status <b>{% if order.status == 'n' %}<a id="{{ order.status }}" href="?action=pay">{{ order.get_status_display }}</a>{% else %}<span id="{{ order.status }}">{{ order.get_status_display }}</span>{% endif %}</b></h2>
+		<p></p>
+	{% endblock %}
+	{% block table_suggestions %}
+	    <table class='suggestions' summary='suggestions'>
+			<caption>
+			{% block table_suggestions_caption %}
+				suggestions
+			{% endblock %}
+			</caption>
+			<thead>
+				{% block table_suggestions_head %}
+				{% endblock %}
+			</thead>
+			<tbody>
+			{% block table_suggestions_body %}
+				{% if suggestions.object_list %}
+					{% for suggestion in suggestions.object_list %}
+						<tr class='{{ suggestion.get_status_display }}'>
+							<td width="80%">
+								<span>{{ suggestion.desc}}</span><br/>
+								{% with suggestion.crdate|timesince as timesince %}
+								    <small>{% if timesince == '0 minutes' %}just now{% else %}{{ timesince }} ago{% endif %}, author: {% if suggestion.user == user %}me{% else %}{{ suggestion.user }}{% endif %}</small>
+								{% endwith %}							
+							</td>
+							<td width="20%" align="right" valign="center">
+								{% block suggestion_status %}
+								    {% include "orders/snippets/suggestion_status.djhtml" %}
+								{% endblock %}
+								{% block suggestion_polls %}
+								{% endblock %}
+							</td>
+						</tr>
+					{% endfor %}
+				{% endif %}			
+			{% endblock %}
+			</tbody>
+			<tfoot>
+			{% block table_suggestions_foot %}
+				{% if suggestions.paginator.num_pages > 1 %}
+					<tr>
+						<th colspan="2">
+							{% if suggestions.has_previous %}
+								<a href="?page={{ suggestions.previous_page_number }}">&lt;</a>
+							{% endif %}
+							{{ suggestions.number }} of {{ suggestions.paginator.num_pages }}
+							{% if suggestions.has_next %}
+								<a href="?page={{ suggestions.next_page_number }}">&gt;</a>
+							{% endif %}
+						</th>
+					</tr>
+				{% endif %}
+			{% endblock %}
+			</tfoot>
+		</table>
+	{% endblock %}
+{% endblock %}
+			
+
+
+

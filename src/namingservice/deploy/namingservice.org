@@ -1,0 +1,27 @@
+<VirtualHost 50.57.69.146>
+    # Server description
+    ServerAdmin admin@namingservice.org
+    ServerName namingservice.org
+
+    # Logs
+    ErrorLog    /home/django_projects/namingservice/src/namingservice/logs/error_log
+    CustomLog   /home/django_projects/namingservice/src/namingservice/logs/access_log common
+
+    # wsgi handler
+    WSGIScriptAlias / /home/django_projects/namingservice/src/namingservice/deploy/django.wsgi
+    # wsgi settings
+    WSGIDaemonProcess namingservice-site user=namingservice group=namingservice processes=2 threads=4 maximum-requests=100 display-name=apache-namingservice-wsgi
+    WSGIProcessGroup namingservice-site
+
+    # static django admin
+    Alias "/media/admin/" "/usr/share/pyshared/django/contrib/admin/media/"
+    <Location "/media/admin/">
+        SetHandler None
+    </Location>
+
+    # static project's files
+    Alias "/media/" "/home/django_projects/namingservice/src/namingservice/media/"
+    <Location "/media/">
+        SetHandler None
+    </Location>
+</VirtualHost>

@@ -1,0 +1,19 @@
+{% extends "base_2col.djhtml" %}
+
+{% block title %}
+	{{ flatpage.title }}
+{% endblock %}
+
+{% block page_content %}
+	<div class="post">
+		{% block post %}
+		    <h2 class="title">{% block post_title %}{{ flatpage.title }}{% endblock %}</h2>
+			<p class="meta">{% block post_meta %}{% endblock %}</p>
+			<p class="controls">{% block post_controls %}{% endblock %}</p>
+			<p class="line"></p>
+			<div class="entry">
+				{% block post_entry %}{{ flatpage.content }}{% endblock %}
+			</div>
+		{% endblock %}		
+	</div>					
+{% endblock %}

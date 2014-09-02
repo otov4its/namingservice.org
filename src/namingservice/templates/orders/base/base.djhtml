@@ -1,0 +1,22 @@
+{% extends "base_2col.djhtml" %}
+
+{% block page_content %}
+	{% block action_form %}
+	    
+	{% endblock %}
+	<div class="post">
+		{% block post %}
+			{% block post_social %}{% endblock %}
+		    <h2 class="title">{% block post_title %}{% endblock %}</h2>
+			<p class="meta">{% block post_meta %}{% endblock %}</p>
+			<p class="controls">{% block post_controls %}{% endblock %}</p>
+			<p class="line"></p>
+			<div class="entry">
+				{% block post_entry %}{% endblock %}
+			</div>
+		{% endblock %}
+	</div>
+{% endblock %}
+
+
+

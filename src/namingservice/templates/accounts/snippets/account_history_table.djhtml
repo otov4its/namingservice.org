@@ -1,0 +1,30 @@
+<table class='history' summary='account history'>
+	<caption>account history</caption>
+	<tbody>
+	{% if transactions.object_list %}
+		<thead>
+			<tr><th>date</th><th>type</th><th>amount</th><th>note</th><th>status</th></tr>
+		</thead>
+		{% for t in transactions.object_list %}
+			<tr class='{% cycle '' 'odd' %}'>
+				<td>{{ t.date }}</td>
+				<td>{{ t.get_type_display }}</td>
+				<td align="right">
+					{% if t.type == 'a' or t.type == 'w' %}+{% else %}-{% endif %}{{ t.account.get_currency_display }}{{ t.amount|floatformat:2 }}
+				</td>
+				<td>{{ t.note }}</td>
+				<td><span id="{{ t.status }}">{{ t.get_status_display }}</span></td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="4">you have no transaction yet</td>
+		</tr>
+	{% endif %}
+	</tbody>	
+</table>
+<!-- start pagination -->
+{% with transactions as objects %}
+    {% include "accounts/snippets/pagination.djhtml" %}
+{% endwith %}
+<!-- end pagination -->

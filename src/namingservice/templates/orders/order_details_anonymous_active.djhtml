@@ -1,0 +1,11 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block table_suggestions_body %}{% endblock %}
+
+{% block table_suggestions_foot %}
+<tr>
+	<td colspan="2">
+		{% include "orders/snippets/message_for_anonymous.djhtml" %}
+	</td>
+</tr>
+{% endblock %}

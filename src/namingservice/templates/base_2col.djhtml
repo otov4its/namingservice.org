@@ -1,0 +1,51 @@
+{% extends "base.djhtml" %}
+
+{% block page %}
+	<!-- start sidebar -->
+	<div id="sidebar">
+	{% block sidebar %}
+		{% if user.is_authenticated %}
+			<ul>
+				<li>
+					<h2>menu</h2>
+					<ul>
+						<li><a href="{% url orders_all %}">all orders</a></li>
+						<li><a href="{% url orders_my %}">my orders</a></li>
+						<li><a href="{% url orders_suggestions %}">my suggestions</a></li>
+						<li><a href="{% url accounts.views.account %}">my account</a></li>
+						<li><a href="{% url profiles.views.settings %}">my settings</a></li>
+					</ul>
+				</li>
+			</ul>
+		{% else %}
+			<ul>
+				<li>
+					<h2>A Quick Introduction to Naming Service</h2>
+					<p align="center"><a href="/about/#intro"><img src="{{ MEDIA_URL }}modern_icon_video.gif" style="position:relative; top: 3px;"/> WATCH NOW</a></p>
+				</li>
+				<li>
+					<h2>Looking for a name?</h2>
+					<p>...for your domain, company or your pet; an advertisement slogan or something else? Then you’re on the right way. Here you can find a name for anything.  Just register and describe what name exactly you are looking for. Pay the amount you think is fair. Our contributors get down to work immediately. All you need to do is choose.</p>	
+				</li>
+				<li>
+					<h2>Do you want to make money using your brain?</h2>
+					<p>Do you have a good feel of sonority? Can you make up beautiful names?  Can you comply with the demands of our clients? Can you think creatively? Then you are in the right place. Contribute names, titles, nicknames and make money. If successful – 80% of the order cost is yours.</p>
+				</li>
+			</ul>			
+		{% endif %}	
+	{% endblock %}
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end sidebar -->
+
+	<!-- start content -->
+	<div id="content">
+	{% block messages %}
+		{{ block.super }}	
+	{% endblock %}
+	{% block page_content %}
+		{{ block.super }}	
+	{% endblock %}
+	</div>
+	<!-- end content -->
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "profiles/base/base.djhtml" %}
+
+{% block title %}sign up{% endblock %}
+{% block form_action %}{% url profiles.views.register %}{% endblock %}
+{% block form_title %}register{% endblock %}
+{% block form_submit_value %}register{% endblock %}

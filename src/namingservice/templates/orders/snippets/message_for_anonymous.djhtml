@@ -1,0 +1,3 @@
+<p>
+	<a href='{% url login_page %}'>login</a> or <a href='{% url register_page %}'>register</a> to start adding your suggestions or your own orders
+</p>

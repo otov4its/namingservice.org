@@ -1,0 +1,7 @@
+<form class="action warning" action="{% url delete_order %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="close_x"><a href=".">x</a></div>
+	<h2>do you want to delete the following order?</h2>
+	<p>if all is correct <input type="submit" value="delete" /> or <a href=".">cancel</a></p>
+</form>

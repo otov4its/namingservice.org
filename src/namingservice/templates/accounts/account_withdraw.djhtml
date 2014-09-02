@@ -1,0 +1,39 @@
+{% extends "accounts/base/base.djhtml" %}
+
+{% block post_controls %}<a href="{% url my_account %}">account history</a> | <a href="{% url my_account %}?action=add_funds">add funds</a> | withdraw{% endblock %}
+
+{% block post_entry %}
+	<script>
+		function showWithdraw(opt) {
+			var divWithdraw = document.getElementById('withdraw');
+			var divWithdrawMMM = document.getElementById('withdrawMMM');
+			if (opt == "MMM") {
+				divWithdraw.style.display = 'none';
+				divWithdrawMMM.style.display = 'block';
+			}
+			else {
+				divWithdraw.style.display = 'block';
+				divWithdrawMMM.style.display = 'none';	
+			}
+		}
+	</script>
+	<h2>withdraw <select onchange="showWithdraw(this.value)"><option value="USD">$</option><option value="MMM">MMM$</option></select></h2>
+	<div id="withdraw">
+		<p>
+			Carefully fill in the form, provide all required information. After submitting the form you will receive the money within 24 hours.
+		</p>
+		<form action="{% url withdraw %}" method="post">
+			{% csrf_token %}
+			{% include "accounts/snippets/withdraw_form.djhtml" %}
+			<input type="submit" value="withdraw" /> or <a href="{% url my_account %}">cancel</a>
+		</form>
+	</div>
+	<div id="withdrawMMM" style="display: none;">
+		<p>
+			To withdraw MMM$ send email to <a id="mailTo" href="mailto:account@namingservice.org?subject=Withdraw%20MMM$&body=Nickname:%20{{ user.username }}%0d%0aMMM$ amount:%20%0d%0aMMM-2011 account:%20">account@namingservice.org</a> with MMM$ amount, your nickname and your <a href="http://i-mmm.com/en" target="_blank" title="The Social Financial Network">MMM-2011 - The Social Financial Network</a> account. After that you will receive MMM$ to MMM-2011 account within 24 hours.  
+		</p>
+	</div>
+{% endblock %}
+
+
+

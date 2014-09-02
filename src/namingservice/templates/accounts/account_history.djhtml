@@ -1,0 +1,10 @@
+{% extends "accounts/base/base.djhtml" %}
+
+{% block post_controls %}account history | <a href="{% url my_account %}?action=add_funds">add funds</a> | <a href="{% url withdraw %}">withdraw</a>{% endblock %}
+
+{% block post_entry %}
+	{% include "accounts/snippets/account_history_table.djhtml" %}
+{% endblock %}
+
+
+

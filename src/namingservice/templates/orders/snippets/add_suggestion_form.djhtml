@@ -1,0 +1,6 @@
+<form action="{% url add_suggestion %}" method="post">
+	{% csrf_token %}
+	{{ form.order_id }}
+	{{ form.desc }}
+	<input id="add" type="submit" value="+ add" style="width: 10%"/>
+</form>

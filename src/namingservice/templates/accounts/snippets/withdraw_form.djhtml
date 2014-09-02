@@ -1,0 +1,31 @@
+{{ form.non_field_errors }}
+{% for field in form %}
+    <div class="fieldWrapper">
+        {% if field.html_name == 'amount' %}
+			{% if field.errors %}
+				{% for error in field.errors %}
+				    <span class="errorlist">{{ error|escape }}</span><br/>
+				{% endfor %}
+			{% endif %}
+			{{ field.label_tag|lower }}&nbsp;&nbsp;${{ field }}
+			{% if field.help_text %}
+			    <p class="help_text">* {{ field.help_text|safe }}</p>
+			{% else %}
+				<p></p>
+			{% endif %}
+		{% else %}
+			{{ field.label_tag|lower }}<br/>
+			{% if field.errors %}
+				{% for error in field.errors %}
+				    <span class="errorlist">{{ error|escape }}</span><br/>
+				{% endfor %}
+			{% endif %}
+	        {{ field }}
+			{% if field.help_text %}
+			    <p class="help_text">* {{ field.help_text|safe }}</p>
+			{% else %}
+				<p></p>
+			{% endif %}
+        {% endif %}
+    </div>
+{% endfor %}

@@ -1,0 +1,8 @@
+{% extends "profiles/base/base.djhtml" %}
+
+{% block title %}login{% endblock %}
+{% block form_action %}{% url django.contrib.auth.views.login %}{% endblock %}
+{% block form_title %}login{% endblock %}
+{% block form_submit_value %}login{% endblock %}
+
+

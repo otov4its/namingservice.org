@@ -1,0 +1,20 @@
+{% extends "base_2col.djhtml" %}
+
+{% block title %}my account{% endblock %}
+
+{% block page_content %}
+	{% block action_form %}
+	    
+	{% endblock %}
+	<div class="post">
+		{% block post %}
+		    <h2 class="title">{% block post_title %}account balance: <span>{% for account in accounts %}{{ account.get_currency_display }}{{ account.amount|floatformat:2 }}{% if account.currency == 'MMM' %}<sup style="color: red;">new</sup>{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %}</span>{% endblock %}</h2>
+			<p class="meta">{% block post_meta %}see balance and account history{% endblock %}</p>
+			<p class="controls">{% block post_controls %}<a href="{% url my_account %}">account history</a> | <a href="{% url my_account %}?action=add_funds">add funds</a> | <a href="{% url withdraw %}">withdraw</a>{% endblock %}</p>
+			<p class="line"></p>
+			<div class="entry">
+				{% block post_entry %}{% endblock %}
+			</div>
+		{% endblock %}		
+	</div>
+{% endblock %}

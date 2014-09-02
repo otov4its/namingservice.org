@@ -1,0 +1,18 @@
+{% extends "orders/base/base.djhtml" %}
+
+{% block title %}add a new order{% endblock %}
+
+{% block post_title %}add a new order{% endblock %}
+
+{% block post_meta %}Write a comprehensive description (e.g. domain name, company name, the name of an advertising campaign, or even a name for your pet or anything else). If you have any difficulties with writing descriptions, you can <a href="{% url orders_all %}">look at examples</a>{% endblock %}
+
+{% block post_entry %}
+	<form action="{% url add_order %}" method="post">
+		{% csrf_token %}
+		{% include "orders/snippets/add_order_form.djhtml" %}
+		<input type="submit" value="+ add a new order" /> or <a href="{% url orders_my %}">cancel</a>
+	</form>
+{% endblock %}
+
+
+

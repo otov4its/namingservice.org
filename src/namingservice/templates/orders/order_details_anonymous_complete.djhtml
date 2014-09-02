@@ -1,0 +1,13 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block post_meta %}{{block.super}}<br/>suggestion author: {{ suggestions.user }}{% endblock %}
+
+{% block order_desc %}
+	{{block.super}}
+
+	<h2>win suggestion <span id="c"><b>{{ suggestions.desc }}</b></span></h2>
+	
+	{% include "orders/snippets/message_for_anonymous.djhtml" %}
+{% endblock %}
+
+{% block table_suggestions %}{% endblock %}

@@ -1,0 +1,16 @@
+{% if user == order.user %}
+	{% if order.status == 'a' %}
+	    {% if suggestion.status == 's' or suggestion.status == 'n'%}
+	        <a id='like' href="#">like</a>|<a id='dislike' href="#">dislike</a>|<a id='win' href="#">win</a>
+	    {% else %}
+			<span id="{{ suggestion.get_status_display }}">{{ suggestion.get_status_display|upper }}</span>|<a id='win' href="#">win</a>
+		{% endif %}
+	{% endif %}
+	{% if order.status == 'c' %}
+		<h1 id='win'>{{ suggestion.get_status_display }}</h1>
+	{% endif %}
+{% else %}
+	{% if order.status == 'a' or  order.status == 'c'%}
+		<span id="{{ suggestion.get_status_display }}">{{ suggestion.get_status_display|upper }}</span>
+	{% endif %}
+{% endif %}

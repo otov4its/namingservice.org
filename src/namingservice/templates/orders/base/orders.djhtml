@@ -1,0 +1,9 @@
+{% extends "orders/base/base.djhtml" %}
+
+{% block post_entry %}
+	{% include "orders/snippets/orders_table.djhtml" %}
+{% endblock %}
+			
+
+
+

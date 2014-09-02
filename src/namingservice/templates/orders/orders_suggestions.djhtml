@@ -1,0 +1,17 @@
+{% extends "orders/base/orders.djhtml" %}
+
+{% block title %}my suggestions{% endblock %}
+
+{% block post_title %}my suggestions{% endblock %}
+
+{% block post_meta %}see all the orders to which you've ever added suggestions{% endblock %}
+
+{% block post_entry %}
+	{% if not orders.object_list %}
+		<p>
+			you have no suggestion yet, click <a href="{% url orders_all %}">all orders</a> pick the ones you like and start adding suggestions right now
+		</p>
+	{% else %}
+		{% include "orders/snippets/orders_table.djhtml" %}
+	{% endif %}
+{% endblock %}

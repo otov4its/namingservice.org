@@ -1,0 +1,26 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block title %}my {{ block.super }}{% endblock %}
+
+{% block action_form %}
+	{% if form %}
+		{% if request.GET.action == 'pay' %}
+		    {% include "orders/snippets/pay_order_form.djhtml" %}
+		{% endif %}
+		{% if request.GET.action == 'delete' %}
+		    {% include "orders/snippets/delete_order_form.djhtml" %}
+		{% endif %}
+	{% endif %}
+{% endblock %}    
+
+{% block post_title %}my {{ block.super }}{% endblock %}
+
+{% block post_meta %}date: {{ order.crdate }}, author: me{% endblock %}
+
+{% block post_controls %}<a href='?action=pay'>pay order</a> or <a href='?action=delete'>delete order</a>{% endblock %}
+
+{% block table_suggestions_foot %}
+<tr>
+	<td colspan="2">to start receiving suggestions you need <a href="{{ order.get_absolute_url }}?action=pay">to pay</a> or you can <a href="{{ order.get_absolute_url }}?action=delete">remove</a> it until it's paid</td>
+</tr>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "orders/base/order_details.djhtml" %}
+
+{% block post_meta %}{{block.super}}<br/>suggestion author: {% if win_suggestion.user == user %}me{% else %}{{ win_suggestion.user }}{% endif %}{% endblock %}
+
+{% block order_desc %}
+	{{block.super}}
+
+	<h2>win suggestion <b>{{ win_suggestion.desc }}</b></h2>
+	<p></p>
+{% endblock %}
+
+{% block table_suggestions_caption %}my {{block.super}}{% endblock %}
+
+{% block suggestion_status %}
+	{% with suggestion.get_status_display as status %}
+	    <span id="{{ status }}">{{ status }}</span>
+	{% endwith %}	
+{% endblock %}
+
+{% if not suggestions.object_list %}
+    {% block table_suggestions_head %}
+		<tr>
+			<th colspan="2">this order has been closed and you can no longer add suggestions</th>
+		</tr>
+	{% endblock %}
+{% endif %}

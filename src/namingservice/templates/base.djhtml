@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<html>
+	<head>
+		<!-- start google verification meta tag -->
+		<meta name="google-site-verification" content="I4StNa9hb0Uoc0e_VUZJF4auretSyOS5R4Eh9f3LTkw" />
+		<!-- end google verification meta tag -->
+		<title>Naming Service{% block title_delimeter %}: {% endblock %}{% block title %}find your name here{% endblock %}</title>
+		<meta name="description" content="Naming service - find your name here" />
+		<link href="{{ MEDIA_URL }}css/default.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="{{ MEDIA_URL }}favicon.ico" >
+		<!-- start google analytics -->
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23552613-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+		<!-- end google analytics -->
+	</head>
+	<body>
+		<!-- start header -->
+		<div id="header">
+			<div id="logo">
+				<h1><a href="{% url home_page %}">naming servic<span>e</span></a></h1>
+				<h2>find yourself a name here</h2>				
+			</div>
+			<div id="menu">				
+				<h1>
+					<a href="{% url home_page %}">Home</a> |
+					<a href="/news/">News</a> |
+					<a href="/about/">About</a>
+				</h1>				
+			</div>
+			<div id="info">				
+				<h3>
+					{% if user.is_authenticated %}
+					| welcome, {{ user.username }} | <a href="{% url django.contrib.auth.views.logout %}">sign out</a>
+					{% else %}
+					<a href="{% url django.contrib.auth.views.login %}">login</a> or <a href="{% url profiles.views.register %}">sign up</a>
+					{% endif %}
+				</h3>
+			</div>
+		</div>
+		<!-- end header -->
+		
+		<!-- start page -->
+		<div id="page">
+		{% block page %}
+			<!-- start content -->
+			<div id="content">
+				{% block messages %}
+					{% if messages %}
+					    {% for message in messages %}
+							<div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+						    	<p>{{ message|safe }}</p>
+							</div>
+					    {% endfor %}
+					{% endif %}
+				{% endblock %}			
+				{% block page_content %}					
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum dolor quis lectus mollis ultrices. Fusce volutpat pulvinar porttitor. In sem ante, ornare ut sollicitudin vel, dignissim sit amet risus. Nulla arcu risus, tincidunt nec hendrerit vel, interdum blandit eros. Aliquam fermentum lectus ultrices neque bibendum at vehicula libero cursus. Sed placerat varius libero sit amet interdum. Maecenas id massa nec tellus consequat congue ac pulvinar ante. Sed mi arcu, facilisis eget interdum ut, tempor ut massa. Fusce molestie lacus suscipit orci gravida viverra. Nulla nec sollicitudin ante. Fusce eros diam, fermentum non rutrum non, cursus a sapien. Aenean quis ante massa. Nullam nec nulla mi, ut pharetra justo. Vivamus mattis interdum mi eget rhoncus. Nullam posuere vehicula commodo.</p>
+				{% endblock %}
+			</div>
+			<!-- end content -->
+		{% endblock %}
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end page -->
+		<!-- start footer -->
+		<div id="footer">
+			<p id="legal">
+				<a href="http://www.facebook.com/pages/namingserviceorg/257871107572483" target="_blank"><img width="75px" height="75px" src="{{ MEDIA_URL }}facebook.png" /></a>
+				<a href="http://twitter.com/namingservice" target="_blank"><img width="75px" height="75px" src="{{ MEDIA_URL }}twitter_newbird_blue.png" /></a><br/><br/>
+				&copy;{% now "Y" %} All Rights Reserved. | <a href="{% url home_page %}">namingservice.org</a><br/><br/>Designed by <a target="_blank" href="http://www.freecsstemplates.org/">Free CSS Templates</a>
+			</p>
+			<!--
+			<div class="debug">
+				{% for dic in sql_queries %}
+				    {{ forloop.counter }} | {{ dic.time }}: {{ dic.sql }}<br/>
+				{% endfor %}
+			</div>
+			-->
+		</div>
+		<!-- end footer -->
+		<!-- start userecho widget -->
+		<script type='text/javascript'>
+
+		var _ues = {
+		host:'namingservice.userecho.com',
+		forum:'6332',
+		lang:'en',
+		tab_corner_radius:10,
+		tab_font_size:20,
+		tab_image_hash:'ZmVlZGJhY2s%3D',
+		tab_alignment:'left',
+		tab_text_color:'#FFFFFF',
+		tab_bg_color:'#66B851',
+		tab_hover_color:'#71CC5A'
+		};
+		
+		(function() {
+		    var _ue = document.createElement('script'); _ue.type = 'text/javascript'; _ue.async = true;
+		    _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/' : 'http://') + 'cdn.userecho.com/js/widget-1.4.gz.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(_ue, s);
+		  })();
+		
+		</script>
+		<!-- end userecho widget -->
+	</body>
+</html>
