@@ -1,4 +1,4 @@
 namingservice.org
 =================
 
-Naming-service project on Python/Django
+http://namingservice.org project on Python/Django
